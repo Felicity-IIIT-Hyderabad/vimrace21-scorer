@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  docker:
+    image: "docker:dind"
+    privileged: true
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+    command: --tls=false
+    volumes:
+      - ${PWD}/sample-submission:/tmp
+  vim:
+    build:
+      context: .
+    volumes:
+      - ${PWD}/sample-submission:/tmp
