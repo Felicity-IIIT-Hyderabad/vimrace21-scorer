@@ -1,6 +1,7 @@
 #!/bin/sh
 
 cd /scorer/files
+chmod 757 .
 
 err=0
 corr=0
@@ -11,9 +12,10 @@ for f in *.in; do
 
     # change permissions for input file
     chown vimgolf:vimgolf "$f"
+    chown vimgolf:vimgolf "solve"
 
     # run vim as vimgolf user so they cant edit any other files
-    su - vimgolf -c "vim -u NONE -Z -n +0 -s solve $f >/dev/null" &
+    su vimgolf -c "vim -u NONE -Z -n +0 -s solve $f >/dev/null" &
     pid=$!
 
     # kill process after 3s
