@@ -15,7 +15,7 @@ for f in *.in; do
     chown vimgolf:vimgolf "solve"
 
     # run vim as vimgolf user so they cant edit any other files
-    su vimgolf -c "vim -u NONE -Z -n +0 -s solve $f >/dev/null" &
+    su vimgolf -c "vim -i NONE -u NONE -Z -n +0 -s solve $f >/dev/null" &
     pid=$!
 
     # kill process after 3s
